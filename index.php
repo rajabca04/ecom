@@ -42,6 +42,7 @@
                             while($row = mysqli_fetch_array($calling_product)){
                         ?>
                 <div class="col-3">
+                    <a href="product.php?pro=<?= $row['p_id'];?>">
                     <div class="card mb-4">
                         <img src="<?= "admin/product_image/".$row['image'];?>" alt="" class="w-100 " height="200px">
                             <div class="card-body">
@@ -51,7 +52,9 @@
                                 <h6 class="small font-weight-bolder text-truncate "><?= $row['p_title'];?></h6>
                             </div>
                         </div>
-                        </div>
+                    </div>
+                    
+                    </a>
                         <?php } ?>
                     </div>
                 </div>

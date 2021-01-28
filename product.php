@@ -25,20 +25,7 @@
                 <div class="col-lg-9">
                     <div class="row">   
                         <?php
-                            if(isset($_GET['cat'])){
-                                $cat_id = $_GET['cat'];
-                                $calling_product = mysqli_query($connect,"select * from products JOIN categories ON products.p_category_id = categories.id WHERE categories.title='$cat_id'");
-                            }
-                            elseif(isset($_GET['find'])){
-                                $search = $_GET['search'];
-                                $calling_product = mysqli_query($connect,"select * from products JOIN categories ON products.p_category_id = categories.id WHERE products.p_title LIKE '%$search%'");
-                                
-                            }
-
-
-                            else{
-                                $calling_product = mysqli_query($connect,"select * from products JOIN categories ON products.p_category_id = categories.id");
-                            }
+                            $calling_product= mysqli_query($connect,"select * from products JOIN categories ON products.p_category_id = categories.id where p_id ='".$_GET['pro']."'");
                             while($row = mysqli_fetch_array($calling_product)){
                         ?>
                 <div class="col-3">
@@ -49,6 +36,12 @@
                                 <span><?= $row['brand'];?></span>
                                 <div class="lead text-muted"><?= $row['title'];?></div>
                                 <h6 class="small font-weight-bolder text-truncate "><?= $row['p_title'];?></h6>
+                            </div>
+                            <div class="card">
+                                <div class="card-header text-center text-info">Product Description.</div>
+                                <div class="card-body">
+                                    <?= $row['p_description']; ?>
+                                </div>
                             </div>
                         </div>
                         </div>
